@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHROMA STUDIO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-studio: #ffffff;
+      --accent-tech: #6366f1;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-studio);
+      color: #0f172a;
+      overflow: hidden;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .dot-grid {
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    /* Soft light tech gradient for header/footer */
+    .tech-bar-light {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .segment-transition {
+      transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Clean transition for the add button */
+    .add-btn-trigger {
+      opacity: 0;
+      transform: scale(0.6);
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 60;
+    }
+    .gap-zone:hover .add-btn-trigger {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+      "react/": "https://esm.sh/react@^19.2.3/",
+      "react": "https://esm.sh/react@^19.2.3",
+      "@google/genai": "https://esm.sh/@google/genai@^1.35.0"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
