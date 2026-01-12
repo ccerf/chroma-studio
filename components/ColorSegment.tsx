@@ -24,9 +24,9 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
   };
 
   const getContrastLabel = (status: string) => {
-    if (status === 'AAA') return 'High Contrast (AAA)';
-    if (status === 'AA') return 'Good Contrast (AA)';
-    return 'Low Contrast';
+    if (status === 'AAA') return 'Contrast: Great (AAA)';
+    if (status === 'AA') return 'Contrast: Good (AA)';
+    return 'Contrast: Low';
   };
 
   return (
@@ -39,11 +39,11 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
         className="flex flex-col items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{ color: textColor }}
       >
-        <div className="px-2 py-0.5 border border-current/20 rounded-sm">
+        <div className="px-2.5 py-1 border border-current/20 rounded-md bg-white/5 backdrop-blur-sm">
            <span className="text-[8px] font-black tracking-widest mono uppercase">{getContrastLabel(contrast)}</span>
         </div>
         <span className="text-[7px] font-bold mono opacity-40 tracking-tight">
-          RGB[{rgb?.r}, {rgb?.g}, {rgb?.b}]
+          DATA_NODE: {rgb?.r}_{rgb?.g}_{rgb?.b}
         </span>
       </div>
 
@@ -54,12 +54,12 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
             type="text" 
             value={color.hex.replace('#', '')} 
             onChange={(e) => onHexChange(color.id, '#' + e.target.value)}
-            className="text-xl font-black bg-transparent border-none text-center focus:outline-none focus:ring-0 uppercase w-full cursor-pointer tracking-[0.1em] mono hover:bg-current/10 rounded-sm transition-all py-1.5"
+            className="text-xl font-black bg-transparent border-none text-center focus:outline-none focus:ring-0 uppercase w-full cursor-pointer tracking-[0.1em] mono hover:bg-current/10 rounded-md transition-all py-1.5"
             maxLength={6}
           />
-          <div className="w-8 h-[1px] bg-current opacity-20 mt-0.5" />
+          <div className="w-10 h-[1.5px] bg-current opacity-30 mt-1" />
         </div>
-        <p className="text-[9px] font-black uppercase tracking-[0.25em] text-center truncate w-full px-2 opacity-70 mono">
+        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-center truncate w-full px-2 opacity-80 mono">
           {color.name}
         </p>
       </div>
@@ -69,11 +69,11 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
           <button 
             onClick={copyToClipboard}
-            className="p-2.5 hover:bg-current/10 rounded-sm border border-transparent hover:border-current/10 transition-all relative"
+            className="p-2.5 hover:bg-current/10 rounded-md border border-transparent hover:border-current/10 transition-all relative"
             title="Copy Hex"
           >
             {isCopied && (
-              <span className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 text-[7px] font-black bg-slate-900 text-white px-2 py-1 rounded-sm shadow-xl z-50 mono">
+              <span className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 text-[7px] font-black bg-slate-900 text-white px-2 py-1 rounded-md shadow-2xl z-50 mono">
                 COPIED
               </span>
             )}
@@ -82,7 +82,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
           
           <button 
             onClick={() => onRemove(color.id)}
-            className="p-2.5 hover:bg-current/10 rounded-sm border border-transparent hover:border-current/10 transition-all"
+            className="p-2.5 hover:bg-current/10 rounded-md border border-transparent hover:border-current/10 transition-all"
             title="Eject Segment"
           >
             <TrashIcon size={14} />
@@ -90,7 +90,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
 
           <button 
             onClick={() => onToggleLock(color.id)}
-            className={`p-2.5 rounded-sm border transition-all ${color.isLocked ? 'bg-current/15 border-current/30' : 'hover:bg-current/10 border-transparent hover:border-current/10'}`}
+            className={`p-2.5 rounded-md border transition-all ${color.isLocked ? 'bg-current/15 border-current/40' : 'hover:bg-current/10 border-transparent hover:border-current/10'}`}
             title="Pin Column"
           >
             {color.isLocked ? <LockIcon size={14} /> : <UnlockIcon size={14} />}
@@ -102,14 +102,14 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
 
       {/* Anchor for Locked State */}
       {color.isLocked && (
-        <div className="absolute top-10 left-6 flex flex-col items-center gap-2 opacity-30 pointer-events-none">
-           <div className="w-[2px] h-5 bg-current rounded-sm" />
-           <span className="text-[6px] mono font-black vertical-text uppercase tracking-widest" style={{ color: textColor, writingMode: 'vertical-rl' }}>FIXED_NODE</span>
+        <div className="absolute top-10 left-6 flex flex-col items-center gap-2 opacity-40 pointer-events-none">
+           <div className="w-[3px] h-6 bg-current rounded-full" />
+           <span className="text-[6px] mono font-black vertical-text uppercase tracking-widest" style={{ color: textColor, writingMode: 'vertical-rl' }}>LOCKED_CELL</span>
         </div>
       )}
       
       {/* Subtle depth overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/[0.05] to-transparent pointer-events-none" />
     </div>
   );
 };

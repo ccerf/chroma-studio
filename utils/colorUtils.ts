@@ -149,3 +149,38 @@ const hslToHex = (h: number, s: number, l: number): string => {
   };
   return `#${f(0)}${f(8)}${f(4)}`.toUpperCase();
 };
+
+/**
+ * Local Semantic Synthesis Engine
+ * Replaces the need for Gemini API by mapping keywords to hue ranges.
+ */
+export const generateThemePalette = (prompt: string, count: number): string[] => {
+  const p = prompt.toLowerCase();
+  let baseHue = Math.random() * 360;
+  let saturationRange = [40, 80];
+  let lightnessRange = [30, 70];
+  let variance = 60;
+
+  if (p.includes('ocean') || p.includes('sea') || p.includes('water')) {
+    baseHue = 200; variance = 40;
+  } else if (p.includes('forest') || p.includes('nature') || p.includes('leaf')) {
+    baseHue = 120; variance = 50;
+  } else if (p.includes('sunset') || p.includes('fire') || p.includes('warm')) {
+    baseHue = 15; variance = 40; lightnessRange = [40, 60];
+  } else if (p.includes('cyberpunk') || p.includes('neon') || p.includes('night')) {
+    baseHue = 280; variance = 100; saturationRange = [80, 100]; lightnessRange = [20, 50];
+  } else if (p.includes('pastel') || p.includes('soft') || p.includes('candy')) {
+    saturationRange = [20, 40]; lightnessRange = [80, 95]; variance = 360;
+  } else if (p.includes('minimal') || p.includes('grey') || p.includes('stone')) {
+    saturationRange = [0, 10]; lightnessRange = [20, 90]; variance = 0;
+  } else if (p.includes('desert') || p.includes('sand')) {
+    baseHue = 35; variance = 25; saturationRange = [30, 60];
+  }
+
+  return Array.from({ length: count }, (_, i) => {
+    const h = (baseHue + (Math.random() - 0.5) * variance + (i * (360 / count) * (variance === 360 ? 1 : 0))) % 360;
+    const s = saturationRange[0] + Math.random() * (saturationRange[1] - saturationRange[0]);
+    const l = lightnessRange[0] + Math.random() * (lightnessRange[1] - lightnessRange[0]);
+    return hslToHex(h < 0 ? h + 360 : h, s, l);
+  });
+};
