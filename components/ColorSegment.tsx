@@ -77,7 +77,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
                 COPIED
               </span>
             )}
-            <CopyIcon size={14} />
+            <CopyIcon size={16} />
           </button>
           
           <button 
@@ -85,7 +85,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
             className="p-2.5 hover:bg-current/10 rounded-md border border-transparent hover:border-current/10 transition-all"
             title="Eject Segment"
           >
-            <TrashIcon size={14} />
+            <TrashIcon size={16} />
           </button>
 
           <button 
@@ -93,7 +93,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
             className={`p-2.5 rounded-md border transition-all ${color.isLocked ? 'bg-current/15 border-current/40' : 'hover:bg-current/10 border-transparent hover:border-current/10'}`}
             title="Pin Column"
           >
-            {color.isLocked ? <LockIcon size={14} /> : <UnlockIcon size={14} />}
+            {color.isLocked ? <LockIcon size={16} /> : <UnlockIcon size={16} />}
           </button>
         </div>
         
