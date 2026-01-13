@@ -42,7 +42,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
         <div className="px-2.5 py-1 border border-current/20 rounded-md bg-white/5 backdrop-blur-sm">
            <span className="text-[12px] font-black tracking-widest mono uppercase">{getContrastLabel(contrast)}</span>
         </div>
-        <span className="text-[10px] font-bold mono opacity-40 tracking-tight">
+        <span className="text-[12px] font-bold mono opacity-40 tracking-tight">
           DATA_NODE: {rgb?.r}_{rgb?.g}_{rgb?.b}
         </span>
       </div>
@@ -54,12 +54,12 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
             type="text" 
             value={color.hex.replace('#', '')} 
             onChange={(e) => onHexChange(color.id, '#' + e.target.value)}
-            className="text-xl font-black bg-transparent border-none text-center focus:outline-none focus:ring-0 uppercase w-full cursor-pointer tracking-[0.1em] mono hover:bg-current/10 rounded-md transition-all py-1.5"
+            className="text-2xl font-black bg-transparent border-none text-center focus:outline-none focus:ring-0 uppercase w-full cursor-pointer tracking-[0.1em] mono hover:bg-current/10 rounded-md transition-all py-1.5"
             maxLength={6}
           />
           <div className="w-10 h-[1.5px] bg-current opacity-30 mt-1" />
         </div>
-        <p className="text-[12px] font-black uppercase tracking-[0.25em] text-center truncate w-full px-2 opacity-80 mono">
+        <p className="text-[14px] font-black uppercase tracking-[0.25em] text-center truncate w-full px-2 opacity-80 mono">
           {color.name}
         </p>
       </div>
@@ -97,7 +97,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
           </button>
         </div>
         
-        <span className="text-[10px] mono opacity-30 font-bold uppercase tracking-widest">{hsl}</span>
+        <span className="text-[12px] mono opacity-30 font-bold uppercase tracking-widest">{hsl}</span>
       </div>
 
       {/* Anchor for Locked State */}
