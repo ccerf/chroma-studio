@@ -42,7 +42,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
         <div className="px-2.5 py-1 border border-current/20 rounded-md bg-white/5 backdrop-blur-sm">
            <span className="text-[12px] font-black tracking-widest mono uppercase">{getContrastLabel(contrast)}</span>
         </div>
-        <span className="text-[12px] font-bold mono opacity-40 tracking-tight">
+        <span className="text-[12px] font-bold mono opacity-50 tracking-tight">
           DATA_NODE: {rgb?.r}_{rgb?.g}_{rgb?.b}
         </span>
       </div>
@@ -97,7 +97,7 @@ const ColorSegment: React.FC<ColorSegmentProps> = ({ color, onToggleLock, onRemo
           </button>
         </div>
         
-        <span className="text-[12px] mono opacity-30 font-bold uppercase tracking-widest">{hsl}</span>
+        <span className="text-[12px] mono opacity-50 font-bold uppercase tracking-widest">{hsl}</span>
       </div>
 
       {/* Anchor for Locked State */}
