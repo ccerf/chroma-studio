@@ -167,6 +167,22 @@ const App: React.FC = () => {
               
               {/* Perfectly Centered Square Add Button with Expanded Hover Zone */}
               {index < colors.length - 1 && (
+                <div className="absolute inset-y-0 right-0 w-22 translate-x-1/2 flex items-center justify-center z-50 group/addzone">
+                  
+                  {/* Le bouton lui-même */}
+                  <button 
+                    onClick={() => insertBetween(index)}
+                    className="opacity-0 group-hover/addzone:opacity-100 scale-90 group-hover/addzone:scale-100 pointer-events-auto w-9 h-9 bg-white text-slate-900 shadow-xl rounded-md flex items-center justify-center border border-slate-200 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all active:scale-90"
+                    title="Insert Color"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </button>
+                </div>
+              )}
+              /* {index < colors.length - 1 && (
                 <div className="absolute inset-y-0 right-0 w-16 translate-x-1/2 flex items-center justify-center z-50 pointer-events-none gap-zone group/gap">
                   <button 
                     onClick={() => insertBetween(index)}
@@ -179,7 +195,7 @@ const App: React.FC = () => {
                     </svg>
                   </button>
                 </div>
-              )}
+              )} */
             </div>
           </Fragment>
         ))}
